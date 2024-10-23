@@ -1,0 +1,25 @@
+<%- include("includes/header.ejs") %>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">email</th>
+                <th scope="col">gender</th>
+                <th scope="col">mobile nummber</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for( user of users) { %>
+                <tr>
+                    <th> <%= user.name %></th>
+                    <td> <%= user.email %></td>
+                    <td> <%= user.gender %> </td>
+                    <td> <%= user.contact %> </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    </body>
+
+    </html>

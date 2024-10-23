@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Billing</title>
+</head>
+<body>
+    <h1>Edit Billing</h1>
+
+    <form action="/billing/update/<%= billing[0].id %>" method="POST">
+        <!-- Customer Selection -->
+        <label for="customer">Customer:</label>
+        <select name="customer_id">
+            <% customers.forEach(customer => { %>
+                <option value="<%= customer.id %>" <%= billing[0].customer_id === customer.id ? 'selected' : '' %> >
+                    <%= customer.name %>
+                </option>
+            <% }) %>
+        </select>
+
+        <!-- Product Selection -->
+        <h3>Products</h3>
+        <div id="products">
+            <% billingDetails.forEach((productDetail, index) => { %>
+                <div>
+                    <label><%= productDetail.name %> - $<%= productDetail.price %></label>
+                    <input type="number" name="products[<%= productDetail.product_id %>][quantity]" value="<%= productDetail.quantity %>" min="1">
+                    <input type="hidden" name="products[<%= productDetail.product_id %>][price]" value="<%= productDetail.price %>">
+                </div>
+            <% }) %>
+        </div>
+
+        <!-- Display the current total amount -->
+        <h4>Total Amount: $<%= billing[0].total_amount %></h4>
+
+        <!-- Submit button for updating -->
+        <button type="submit">Update Billing</button>
+    </form>
+
+    <!-- Cancel Button -->
+    <a href="/billings">Cancel</a>
+</body>
+</html>

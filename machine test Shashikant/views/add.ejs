@@ -1,0 +1,32 @@
+<%- include("includes/header.ejs") %>
+
+    <div class="main Registration">
+        <h2>Registration Form</h2>
+        <form method="post" action="/home">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+
+            <label for="mobile">Contact:</label>
+            <input type="text" id="mobile" name="mobile" maxlength="10" required />
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male" name="male">
+                    Male
+                </option>
+                <option value="female" name="female">
+                    Female
+                </option>
+            </select>
+
+            <button type="submit" class="addUser">
+                Submit
+            </button>
+        </form>
+    </div>
+</body>
+
+</html>

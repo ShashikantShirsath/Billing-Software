@@ -1,0 +1,25 @@
+<%- include("includes/header.ejs") %>
+
+<form action="/billing" method="POST">
+    <label for="customer">Customer:</label>
+    <select name="customer_id">
+        <% customers.forEach(customer => { %>
+            <option value="<%= customer.id %>"><%= customer.name %></option>
+        <% }) %>
+    </select>
+
+    <div id="products">
+        <% products.forEach(product => { %>
+            <div>
+                <label><%= product.name %> - $<%= product.price %></label>
+                <input type="number" name="products[<%= product.id %>][quantity]" min="1">
+                <input type="hidden" name="products[<%= product.id %>][price]" value="<%= product.price %>">
+            </div>
+        <% }) %>
+    </div>
+    
+    <button type="submit">Add Billing</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<%- include("includes/header.ejs") %>
+
+<table>
+    <thead>
+        <tr>
+            <th>Billing ID</th>
+            <th>Customer Name</th>
+            <th>Total Amount</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% billings.forEach(billing => { %>
+            <tr>
+                <td><%= billing.id %></td>
+                <td><%= billing.customer_name %></td>
+                <td>$<%= billing.total_amount %></td>
+                <td><%= billing.date %></td>
+                <td>
+                    <a href="/billing/edit/<%= billing.id %>">Edit</a>
+                    <form action="/billing/delete/<%= billing.id %>" method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
+
+</body>
+</html>
